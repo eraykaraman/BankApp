@@ -25,7 +25,13 @@
                     <td>@item.Lastname</td>
                     <td><getAccountCount user-id="@item.Id"></getAccountCount></td>
                     <td>
-                        <a asp-action="Create" asp-controller="Account" asp-route-id="@item.Id">Create New Account</a>
+                        <button type="button" class="btn btn-dark btn-sm ">
+                            <a asp-action="Create" asp-controller="Account" asp-route-id="@item.Id" class="text-decoration-none text-white">Create New Account</a>
+                            </button>
+                        <button type="button" class="btn btn-dark btn-sm">
+                        <a asp-action="GetByUserId" asp-controller="Account" asp-route-userId="@item.Id" class="text-decoration-none text-white">Show Details</a>
+                        </button>
+                      
                     </td>
                 </tr>
 
@@ -34,11 +40,4 @@
         </tbody>
     </table>
 
-
-
-
-    @foreach (var item in Model)
-    {
-
-    }
 </div>

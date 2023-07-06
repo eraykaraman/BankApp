@@ -1,0 +1,47 @@
+﻿@model List<AccountListModel>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-6 ">
+            
+           
+                <h3>User Info</h3>
+                <p><b>User name:</b> @ViewBag.Name</p>
+                <p><b>User lastname:</b> @ViewBag.LastName</p>
+                <p><b>User account count:</b> @Model.Count</p>
+          
+
+        </div>
+
+        <div class="col-6 ">
+            <h3>User Accounts</h3>
+            @if (Model.Count > 0)
+            {
+                @foreach (var account in Model)
+                {
+                    <div class="card mb-4">
+                       
+                        <div class="card-body">
+                            <p class="card-title"> Account Number: @account.AccountNumber</p>
+                            <p class="card-text">Balance: @account.Balance</p>
+                            <a asp-action="SendMoney" asp-controller="Account" asp-route-accountId="@account.Id" class="btn btn-primary">Send Money</a>
+                        </div>
+                    </div>
+                }
+
+                
+            }else
+            {
+                <div class="alert alert-danger" role="alert" >
+
+                    <p class="lead"> User account not found</p>
+                
+                </div>
+            }
+          
+           
+        </div>
+    </div>
+
+</div>

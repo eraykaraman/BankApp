@@ -1,0 +1,24 @@
+﻿@model SelectList
+
+
+
+<div class="container mt-3">
+    <form method="post" asp-action="SendMoney" class="w-75 mx-auto ">
+
+        <input type="hidden" name="SenderId" value="@ViewBag.SenderId" />
+
+        <div class="mb-3">
+            <label>Select the account to send money to</label>
+            <select class="form-select" asp-items="@Model" name="AccountId">
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Money Amount:</label>
+            <input type="number" name="Amount" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>

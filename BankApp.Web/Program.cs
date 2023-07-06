@@ -1,6 +1,7 @@
 using BankApp.Web.Data.Context;
 using BankApp.Web.Data.Interfaces;
 using BankApp.Web.Data.Repositories;
+using BankApp.Web.Data.UnitOfWork;
 using BankApp.Web.Mapping;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,11 +13,12 @@ builder.Services.AddDbContext<BankContext>(opt =>
     opt.UseSqlServer("server=(localdb)\\mssqllocaldb; database=BankDb;" +
         " integrated security = true");
 });
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+//builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+//builder.Services.AddScoped<IUserRepository, UserRepository>();
+//builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserMapper, UserMapper>();
-builder.Services.AddScoped<IAccountRepository, AccountRepository>(); 
-builder.Services.AddScoped<IAccountMapper , AccountMapper>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IAccountMapper, AccountMapper>();
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 

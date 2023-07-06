@@ -2,13 +2,13 @@
 
 @{
     Random rnd = new Random();
-    Console.WriteLine(rnd);
 }
 
 <div class="container">
-    <div class="row mt-5">
-        <h3>Account Info</h3>
-        <div class="col-6 mt-3">
+    <div class="row">
+        
+        <div class="col-6 ">
+            <h3>User Info</h3>
             <p><b>User name:</b> @Model.Name</p>
             <p><b>User lastname:</b> @Model.Lastname</p>
             <p><b>User account count:</b> <getAccountCount user-id="@Model.Id"></getAccountCount></p>

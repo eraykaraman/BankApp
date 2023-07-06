@@ -15,19 +15,19 @@ namespace BankApp.Web.Data.Repositories
         public void Create(T entity)
         {
             _bankContext.Set<T>().Add(entity);
-            _bankContext.SaveChanges();
+         
         }
 
         public void Update(T entity)
         {
             _bankContext.Set<T>().Update(entity);
-            _bankContext.SaveChanges();
+           
         }
 
         public void Remove(T entity)
         {
             _bankContext.Set<T>().Remove(entity);
-            _bankContext.SaveChanges();
+            
         }
 
         public List<T> GetAll()
@@ -38,6 +38,11 @@ namespace BankApp.Web.Data.Repositories
         public T GetById(int id)
         {
             return _bankContext.Set<T>().Find(id);
+        }
+
+        public IQueryable<T> GetQueryble()
+        {
+            return _bankContext.Set<T>().AsQueryable();
         }
     }
 }

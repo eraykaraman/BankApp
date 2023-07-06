@@ -8,6 +8,7 @@
         public List<T> GetAll();
         public T GetById(int id);
 
+        IQueryable<T> GetQueryble();
     }
     
 }
