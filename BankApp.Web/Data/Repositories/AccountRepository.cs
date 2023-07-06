@@ -15,7 +15,7 @@ namespace BankApp.Web.Data.Repositories
 
         public void Create(Account account)
         {
-            _bankContext.Accounts.Add(account);
+            _bankContext.Set<Account>().Add(account);
             _bankContext.SaveChanges();
         }
     }

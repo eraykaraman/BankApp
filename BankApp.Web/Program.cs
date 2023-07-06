@@ -16,7 +16,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserMapper, UserMapper>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>(); 
 builder.Services.AddScoped<IAccountMapper , AccountMapper>();
-
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 

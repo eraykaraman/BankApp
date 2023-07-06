@@ -22,7 +22,12 @@ namespace BankApp.Web.Data.Repositories
         {
             return _bankContext.Users.SingleOrDefault(x => x.Id == id);
         }
+        public void Create(User user)
+        {
+            _bankContext.Set<User>().Add(user);
+            _bankContext.SaveChanges();
+        }
 
-       
+
     }
 }
