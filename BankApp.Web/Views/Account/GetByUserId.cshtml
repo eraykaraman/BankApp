@@ -6,10 +6,18 @@
         <div class="col-6 ">
             
            
-                <h3>User Info</h3>
-                <p><b>User name:</b> @ViewBag.Name</p>
-                <p><b>User lastname:</b> @ViewBag.LastName</p>
-                <p><b>User account count:</b> @Model.Count</p>
+                
+              
+                
+            <h3>User Info</h3>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="card-title"> <b>User name:</b> @ViewBag.Name</p>
+                    <p class="card-title"> <b>User lastname:</b> @ViewBag.LastName</p>
+                    <p class="card-text"><b>User account count:</b> @Model.Count</p>
+                    <a asp-action="Remove" asp-controller="User" asp-route-userId="@ViewBag.Id" class="btn btn btn-danger">Remove User</a>
+                </div>
+            </div>
           
 
         </div>
@@ -23,9 +31,10 @@
                     <div class="card mb-4">
                        
                         <div class="card-body">
-                            <p class="card-title"> Account Number: @account.AccountNumber</p>
-                            <p class="card-text">Balance: @account.Balance</p>
+                            <p class="card-title"> <b>Account Number:</b> @account.AccountNumber</p>
+                            <p class="card-text"> <b>Balance:</b> @account.Balance</p>
                             <a asp-action="SendMoney" asp-controller="Account" asp-route-accountId="@account.Id" class="btn btn-primary">Send Money</a>
+                            <a asp-action="Remove" asp-controller="User" asp-route-userId="@account.Id" class="btn btn-danger">Remove Account</a>
                         </div>
                     </div>
                 }

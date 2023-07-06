@@ -9,11 +9,20 @@
         
         <div class="col-6 ">
             <h3>User Info</h3>
-            <p><b>User name:</b> @Model.Name</p>
-            <p><b>User lastname:</b> @Model.Lastname</p>
-            <p><b>User account count:</b> <getAccountCount user-id="@Model.Id"></getAccountCount></p>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="card-title"> <b>User name:</b> @Model.Name</p>
+                    <p class="card-title"> <b>User lastname:</b> @Model.Lastname</p>
+                    <p class="card-text "><b>User account count:</b> @Model.Id</p>
+                    <a asp-action="Remove" asp-controller="User" asp-route-userId="@Model.Id" class="btn btn btn-danger">Remove User</a>
+                </div>
+            </div>
+
         </div>
+
+
         <div class="col-6">
+            <h3>Account Details</h3>
             <form method="post" asp-action="Create" asp-controller="Account">
                 <input type="hidden" name="UserId" value="@Model.Id" />
                 <div class="mb-3">

@@ -2,7 +2,15 @@
 
 
 
+
 <div class="container mt-3">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
     <form method="post" asp-action="SendMoney" class="w-75 mx-auto ">
 
         <input type="hidden" name="SenderId" value="@ViewBag.SenderId" />
@@ -14,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label>Money Amount:</label>
-            <input type="number" name="Amount" class="form-control" />
+            <input type="number" name="Amount" class="form-control" value="1" min="1" />
         </div>
 
         <div class="mb-3">

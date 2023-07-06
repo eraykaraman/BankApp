@@ -7,5 +7,7 @@ namespace BankApp.Web.Data.Interfaces
     {
          List<User> GetAll();
          User GetById(int id);
+       
+
     }
 }

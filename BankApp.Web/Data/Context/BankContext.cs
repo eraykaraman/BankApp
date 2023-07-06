@@ -1,6 +1,7 @@
 ﻿using BankApp.Web.Data.Configurations;
 using BankApp.Web.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using BankApp.Web.Models;
 
 namespace BankApp.Web.Data.Context
 {
@@ -19,5 +20,7 @@ namespace BankApp.Web.Data.Context
             modelBuilder.ApplyConfiguration(new  AccountConfiguration());
             
         }
+
+        public DbSet<BankApp.Web.Models.UserCreateModel>? UserCreateModel { get; set; }
     }
 }

@@ -65,6 +65,17 @@ namespace BankApp.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Remove(int accountId)
+        {
+            var account = _unitOfWork.GetRepository<Account>().GetById(accountId);
+            _unitOfWork.GetRepository<Account>().Remove(account);
+            _unitOfWork.SaveChanges();
+            return RedirectToAction("Index","Home");
+           
+            
+
+        }
+
 
         [HttpGet]
         public IActionResult GetByUserId(int userId)
@@ -73,6 +84,7 @@ namespace BankApp.Web.Controllers
             var accounts = query.Where(x => x.UserId == userId).ToList();
             var user = _unitOfWork.GetRepository<User>().GetById(userId);
 
+            ViewBag.Id = user.Id;
             ViewBag.Name = user.Name;
             ViewBag.Lastname = user.Lastname;
             var list = new List<AccountListModel>();
@@ -125,7 +137,17 @@ namespace BankApp.Web.Controllers
         public IActionResult SendMoney(SendMoneyModel model)
         {
             var senderAccount = _unitOfWork.GetRepository<Account>().GetById(model.SenderId);
-            senderAccount.Balance -= model.Amount;
+
+            if(senderAccount.Balance >= model.Amount)
+            {
+                senderAccount.Balance -= model.Amount;
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Balance is not enough.";
+                return RedirectToAction("SendMoney");
+            }
+            
 
             _unitOfWork.GetRepository<Account>().Update(senderAccount);
 

@@ -6,15 +6,24 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+  
 
     <table class="mt-4 table table-hover table-bordered table-responsive-md ">
+       
         <thead>
             <tr>
+                <th colspan="4">All users registered in the system</th>
+            </tr>
+            <tr>
+                
                 <th>Name</th>
-                <th>Lastname</th>
+                <th>Last Name</th>
                 <th>Account Count</th>
-                <th></th>
+                <th>
+                    <button type="button" class="btn btn-dark btn-sm">
+                        <a asp-action="Create" asp-controller="User"  class="text-decoration-none text-white">Add User</a>
+                    </button>
+                </th>
             </tr>
         </thead>
         <tbody>
